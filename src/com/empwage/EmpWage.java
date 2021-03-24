@@ -9,16 +9,19 @@ public class EmpWage {
 		final int IS_FULL_TIME = 2;
 		final int EMP_RATE_PER_HR = 20;
 		final int NUM_WORKING_DAY = 20;
+		final int TOTAL_WORKING_HR = 100;
 		// VARIABLE
 		int empHrs = 0;
 		int salary = 0;
+		int day = 0;
 		int totalWorkingHrs = 0;
-		int day;
 
-		// calculating wages for total or maximum number of working days
-		for (day = 1; day <= NUM_WORKING_DAY; day++) {
+		// checking whether the maximum days or maximum hrs
+		while (day < NUM_WORKING_DAY && totalWorkingHrs < TOTAL_WORKING_HR) {
+			day++;
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-			// checking each day working hrs
+
+			// checking how much employee has worked daily
 			switch (empCheck) {
 			case IS_FULL_TIME:
 				empHrs = 8;
@@ -29,10 +32,15 @@ public class EmpWage {
 			default:
 				empHrs = 0;
 			}
-			System.err.println("Employee working Hours =" + empHrs);
-			salary = empHrs * EMP_RATE_PER_HR;
-			System.out.println("Employee Salary = " + salary);
-		}
+			System.out.println("Employee Working Hrs =" + empHrs);
 
+			// adding daily empHrs to get total Working hour
+			totalWorkingHrs = totalWorkingHrs + empHrs;
+
+			// total salary of employee
+			salary = totalWorkingHrs * EMP_RATE_PER_HR;
+			System.out.println("Employee Salary = " + salary);
+
+		}
 	}
 }
