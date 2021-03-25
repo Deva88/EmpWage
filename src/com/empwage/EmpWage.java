@@ -6,8 +6,8 @@ public class EmpWage {
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 	public static final int EMP_RATE_PER_HR = 20;
-	public static final int NUM_WORKING_DAY = 2;
-	public static final int MAX_HRS_IN_MONTH = 10;
+	public static final int NUM_WORKING_DAY = 20;
+	public static final int MAX_HRS_IN_MONTH = 100;
 
 	// class method to get working hour of a employee for a day
 	public static int computingEmpWage() {
