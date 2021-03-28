@@ -5,42 +5,41 @@ public class EmpWage {
 	// constants
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
-	public static final int EMP_RATE_PER_HR = 20;
-	public static final int NUM_WORKING_DAY = 20;
-	public static final int MAX_HRS_IN_MONTH = 100;
+	
+	public static int computeEmpWge(String company, int empRatePerHour, int numOfWokingDays, int maxHoursPerMonth) {
+		
+		//local variables
+				int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+				//computation
+				while (totalEmpHrs <= maxHoursPerMonth  && totalWorkingDays < numOfWokingDays)
+				{
+					totalWorkingDays++;
+					int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
-	// class method to get working hour of a employee for a day
-	public static int computingEmpWage() {
-		// variables
-		int empHrs = 0, totalEmpHrs = 0, totalWorkingDay = 0;
-		// computation
-		while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDay < NUM_WORKING_DAY) {
-			totalWorkingDay++;
-			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-			// checking how much employee has worked daily
-			switch (empCheck) {
-			case IS_PART_TIME:
-				empHrs = 4;
-				break;
-			case IS_FULL_TIME:
-				empHrs = 8;
-				break;
-			default:
-				empHrs = 0;
+					switch (empCheck) {
+					case IS_PART_TIME:
+						empHrs = 4;
+						break;
+					case IS_FULL_TIME:
+						empHrs = 8;
+						break;
+					default:
+						empHrs = 0;
+					}
+
+					totalEmpHrs += empHrs;
+					System.out.println("Day#:" + totalWorkingDays + " Emp Hr: " + empHrs);
+					
+				}
+				// total salary of employee
+				int totalEmpWage = totalEmpHrs * empRatePerHour;
+				System.out.println("Total Emp Wage for company: " +company+" is " + totalEmpWage);
+				return totalEmpWage;
 			}
-			// adding daily empHrs to get total Working hour he has worked
-			totalEmpHrs += empHrs;
-			System.out.println("Day#:" + totalWorkingDay + " Emp Hr: " + empHrs);
-		}
-		// total salary of employee
-		int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HR;
-		System.out.println("Total Emp Wage: " + totalEmpWage);
-		return totalEmpWage;
-	}
-
 	public static void main(String[] args) {
-		computingEmpWage();
-
+		
+		computeEmpWge("DMart", 20, 2, 10);
+		computeEmpWge("Reliance", 10, 4, 20);
+		
 	}
-
 }
